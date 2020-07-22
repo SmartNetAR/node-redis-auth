@@ -1,12 +1,12 @@
 "use strict";
 
 const redis = require("redis");
-const config = "../config/config.js";
+const config = require("../config/config.js");
 
 exports.get = (key, cb) => {
   const client = redis.createClient(config.redis);
-
   client.on("error", function( err) {
+    console.log(err)
     return cb(err);
   });
 
@@ -21,6 +21,8 @@ exports.insert = (key, value, ttl, cb) => {
   const client = redis.createClient(config.redis);
 
   client.on("error", function( err ){
+    console.log(config.redis)
+    console.log(err)
     return cb(err);
   });
 
