@@ -9,7 +9,9 @@ module.exports = {
   },
   redis: {
     host: process.env.REDIS_HOST || "localhost",
-    port: process.env.REDIS_PORT || "6379"
+    port: process.env.REDIS_PORT || "6379",
+    no_ready_check: true,
+    auth_pass: '_Redis123'
   },
   nodemailer: {
     service: process.env.MAIL_SERVICE || 'xxxxx',
