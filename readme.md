@@ -28,3 +28,5 @@ Visualizar reportes almacenados en .nyc_ouput
 
 Generar reporte de cobertura html
   nyc report --reporter=html
+  
+### [Heroku deployment](https://redis-auth.herokuapp.com/)
