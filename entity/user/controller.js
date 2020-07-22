@@ -14,7 +14,7 @@ exports.login = (req, res) => {
 
   mysqlService.executeQuery(queries.getUserByEmailPassword, [email, hashedPassword], (err, results) => {
     if (err) {
-      console.log(err)
+      console.log(err);
       return res.status(500).send("Internal Server Error.");
     }
 
@@ -27,6 +27,7 @@ exports.login = (req, res) => {
 
     redisService.insert( `TOKEN_${token}`, JSON.stringify(result), config.tokenTime, (err) => {
       if (err) {
+        console.log(err);
         return res.status(500).send("Internal Server Error.");
       }
 
@@ -49,6 +50,7 @@ exports.logout = (req, res) => {
 
   redisService.delete(`TOKEN_${token}`, (err) => {
     if (err) {
+      console.log(err);
       return res.status(500).json("Internal Server Error.");
     }
 
@@ -98,6 +100,7 @@ exports.register = (req, res) => {
   ],
   (err, conn, userId) => {
     if (err) {
+      console.log(err);
       if (conn) {
         mysqlService.closeConnection(conn);
       }
