@@ -1,0 +1,51 @@
+version: "3.5"
+
+services:
+    node:
+        container_name: auth_node
+        image: node:current-slim
+        working_dir: /app
+        volumes:
+            - .:/app:cached
+        networks:
+            - authnet
+        ports:
+            - "8089:3000"
+        command: npm start
+
+    db:
+        container_name: auth_db
+        image: mysql:5.7.30
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: auth_db
+            MYSQL_ROOT_PASSWORD: password
+        networks:
+            - authnet
+        volumes:
+            - ./mysql-dump:/docker-entrypoint-initdb.d
+    
+    redis:
+        container_name: auth_redis
+        image: 'docker.io/bitnami/redis:6.0-debian-10'
+        environment:
+          # ALLOW_EMPTY_PASSWORD is recommended only for development.
+          # - ALLOW_EMPTY_PASSWORD=yes
+          - REDIS_PASSWORD=password
+          - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+        networks:
+            - authnet
+        ports:
+            - '6379:6379'
+        volumes:
+        - 'redis_data:/bitnami/redis/data'
+
+volumes:
+    data:
+        driver: "local"
+    redis_data:
+        driver: local
+
+networks:
+    authnet:
+        driver: "bridge"
