@@ -27,7 +27,6 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^7.5.0",
-    "eslint-config-node-leo": "git+https://github.com/SmartNetAR/eslint-config-node-leo.git",
     "mocha": "^7.1.1"
   }
 }
