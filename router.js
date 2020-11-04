@@ -39,6 +39,7 @@ router.get( '/', ( req, res ) => {
                 path: '/about',
                 auth_required: 'yes'
             },
+            version: 1.00,
         }
     } ) ;
 } ) ;

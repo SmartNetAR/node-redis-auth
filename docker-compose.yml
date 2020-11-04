@@ -5,12 +5,14 @@ services:
         container_name: auth_node
         image: node:current-slim
         working_dir: /app
+        environment: 
+            DB_HOST: auth_db
         volumes:
             - .:/app:cached
         networks:
             - authnet
         ports:
-            - "8089:3000"
+            - "8089:5000"
         command: npm start
 
     db:
@@ -20,6 +22,8 @@ services:
         environment:
             MYSQL_DATABASE: auth_db
             MYSQL_ROOT_PASSWORD: password
+        ports:
+            - "3306:3306"
         networks:
             - authnet
         volumes:

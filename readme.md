@@ -32,3 +32,8 @@ $ nyc report --reporter=html
   
 ### [Heroku deployment](https://redis-auth.herokuapp.com/)
 Solo clon heroku deployar con git 
+
+
+
+Run with docker
+docker-compose up --build -d
