@@ -3,7 +3,7 @@
 const express = require( 'express' ) ;
 const router = express.Router() ;
 const { body } = require( 'express-validator' ) ;
-const authController = require( './entity/user/controller' ) ;
+const authController = require( './entity/user/controllers/UserController' ) ;
 const authenticator = require( './middleware/authenticator.js' ) ;
 
 router.post( '/auth/login', authController.login ) ;

@@ -1,3 +1,5 @@
+require( 'dotenv' ).config();
+
 module.exports = {
   port: process.env.PORT || 5000,
   db: {
@@ -20,7 +22,10 @@ module.exports = {
         user: process.env.MAIL_USER || 'xxxxx',
         pass: process.env.MAIL_PASS || 'xxxxx'
     }
-},
+  },
   tokenTime: process.env.TOKEN_TIME || 3000,
-  resetTime: process.env.RESET_TIME || 3000
+  resetTime: process.env.RESET_TIME || 3000,
+  authentication: {
+    authenticationDefault: process.env.AUTHENTICATION_DEFAULT || 'redis'
+  }
 };

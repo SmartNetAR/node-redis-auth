@@ -6,14 +6,14 @@ services:
         image: node:current-slim
         working_dir: /app
         environment: 
-            DB_HOST: auth_db
+            DB_HOST: db
         volumes:
             - .:/app:cached
         networks:
             - authnet
         ports:
-            - "8089:5000"
-        command: npm start
+            - "5000:5000"
+        command: npm run dev
 
     db:
         container_name: auth_db
