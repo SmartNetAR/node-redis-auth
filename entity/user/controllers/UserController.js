@@ -27,7 +27,7 @@ exports.login = ( req, res ) => {
         const token = utils.generateString( 28 ) ;
         const result = results[0] ;
 
-        const authService = AuthFactory.create();
+        // const authService = AuthFactory.create();
 
         redisService.insert( `TOKEN_${token}`, JSON.stringify( result ), config.tokenTime, ( err ) => {
             if ( err ) {
